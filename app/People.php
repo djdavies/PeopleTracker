@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class People extends Model
 {
-    protected $table = 'person';
+    protected $table = 'people';
 
     public function googleResults() {
     	return $this->hasOne('App\GoogleResults');
