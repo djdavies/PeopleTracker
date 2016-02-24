@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class People extends Model
 {
-    protected $table = 'person';
+    // protected $table = 'people';
 
     public function googleResults() {
-    	return $this->hasOne('App\GoogleResults');
+    	return $this->hasOne('GoogleResults');
     }
 
     public function fbResults() {
-    	return $this->hasOne('App\FbResults');
+    	return $this->hasOne('FbResults');
     }
 }
