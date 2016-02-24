@@ -25,6 +25,14 @@ class PeopleTableSeederTest extends Seeder
             'content' => 'test',
             'people_id' => $people->id
             ]);
+<<<<<<< HEAD
+    	// DB::table('google_results')->insert([
+    	// 	'title' => 'D-squared Digest -- FOR bigger pies and shorter hours and <b>...</b>',
+     //    	'url' => 'http://blog.danieldavies.com/',
+     //    	'content' => 'Can he really be saying that? Is that bastard Davies blaming the victim? ..... If you \nliked this &quot;<b>Daniel Davies</b>&quot; website, you might be interested in. &quot;Danux&quot;, the web\u00a0...'
+    	// ]);
+=======
+>>>>>>> seeding
 
         $people->save();
         $google->save();
