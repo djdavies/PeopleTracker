@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('googleSearch', function() {
+	return view('googleSearch');
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
