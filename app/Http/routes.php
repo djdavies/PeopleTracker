@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('googleSearch', function() {
-	return view('googleSearch');
-});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -29,6 +27,24 @@ Route::get('googleSearch', function() {
 |
 */
 
+
 Route::group(['middleware' => ['web']], function () {
-    //
+
+	Route::get('/', function () {
+    	return view('layouts.master');
+	});
+
+    // Perform the search...
+
+
+    // Show the Google Search page.
+    Route::get('/googleSearch', function(Request $request) {
+	    $googleResult = new App\GoogleResult;
+	    $googleResult->name = $request->name;
+	    $googleResult->save();
+
+    	return redirect('/');
+	});
+
+		// return view('googleSearch');
 });

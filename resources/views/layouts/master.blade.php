@@ -27,23 +27,10 @@
 
 <main>
     <div class="container">
-        @yield('heading')
+        @yield('content')
     </div>
 </main>
 
-<div class="alert alert-info" role="alert">Full name, e.g. Daniel Davies</div>
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon3">Person name</span>
-  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-</div>
-
-<div class="alert alert-info" role="alert">Please only provide one, e.g. Cardiff University</div>
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon3">School, address, age, location, etc.</span>
-  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-</div>
-
-<button type="button" class="btn btn-default">Search</button>
 
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 
