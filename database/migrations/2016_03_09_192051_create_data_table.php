@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGoogleResultsTable extends Migration
+class CreateDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,10 @@ class CreateGoogleResultsTable extends Migration
      */
     public function up()
     {
-        Schema::create('google_results', function (Blueprint $table) {
+        Schema::create('data', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('people_id');
-            $table->timestamps();
-            $table->string('url');
-            $table->string('title');
-            $table->string('content');
+            $table->unsignedInteger('googleResults_id');
+            $table->string('content_data');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateGoogleResultsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('google_results');
+        Schema::drop('data');
     }
 }
