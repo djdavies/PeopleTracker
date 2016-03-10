@@ -20,7 +20,7 @@
     </div>
     <div class="nav navbar-nav navbar-right">
         <li><a href="#">Google Search</a></li>
-        <li><a href="#">Facebook Search</a></li>
+        <li><a href="#">Current People</a></li>
     </div>
   </div>
 </nav>

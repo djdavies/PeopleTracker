@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -34,17 +36,7 @@ Route::group(['middleware' => ['web']], function () {
     	return view('layouts.master');
 	});
 
-    // Perform the search...
-
-
-    // Show the Google Search page.
-    Route::get('/googleSearch', function(Request $request) {
-	    $googleResult = new App\GoogleResult;
-	    $googleResult->name = $request->name;
-	    $googleResult->save();
-
-    	return redirect('/');
-	});
-
-		// return view('googleSearch');
+    Route::get('people', 'PeopleController@showAllPeople');
+    Route::get('people/{id}/', 'PeopleController@showPerson');
+    
 });
