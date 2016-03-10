@@ -14,9 +14,11 @@
         <li class="list-group-item"><span class="label label-primary">URL</span><br>{{{ $googleResult->url }}}</li>
         <li class="list-group-item">
             Correct result?
-            <button type="button" class="btn btn-default" aria-label="Left Align">
-                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-            </button>
+            <a href="googleresult/{{$googleResult->id}}">
+                <button type="button" class="btn btn-default" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                </button>
+            </a>
             <button type="button" class="btn btn-default" aria-label="Left Align">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             </button>
