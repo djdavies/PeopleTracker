@@ -39,7 +39,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('people', 'PeopleController@showAllPeople');
     Route::get('people/{id}/', 'PeopleController@showPerson');
 
-    //TODO: make this route point to the update function!
     Route::resource('people/googleresult/{id}/', 'GoogleResultsController@update');
+
+    // Google People Search Page.
+    Route::get('/googlesearch', function() {
+        return view('googleSearch');
+    });
+
+    Route::resource('googlesearchperson/', 'GoogleResultsController@create');
     
 });
