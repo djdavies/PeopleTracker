@@ -17,11 +17,11 @@ class PeopleController extends Controller
      */
     public function showPerson($id)
     {
-        $googleResult = GoogleResults::wherePeopleId($id)->get();
+        $googleResults = GoogleResults::wherePeopleId($id)->get();
 
         return view('person', 
             ['person' => People::findOrFail($id),
-            'googleResult' => $googleResult]);
+            'googleResults' => $googleResults]);
     }
 
     // Show profiles for all users.
