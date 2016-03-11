@@ -1,33 +1,19 @@
 @extends('layouts.master')
 
+@section('title')
+	Perform Google Person Search
+@endsection
+
 @section('content')
 
-	<div class="panel-body">
-		<!-- Display Validation Errors -->
-		@include('common.errors')
+	{!! Form::open(array('url' => array('googlesearchperson'))) !!}
 
-		    <!-- Task Name -->
-		    <div class="form-group">
-		        <label for="googleSearch" class="col-sm-3 control-label">Google Search</label>
+	{!! Form::label('query', 'Search Query') !!}
+	{!!Form::text('query', '', [
+		'placeholder' => "e.g. Daniel Davies Cardiff University"
+		])!!}
 
-		        <div class="col-sm-6">
-		            <input type="text" name="name" id="googleSearch-name" class="form-control">
-		        </div>
-		    </div>
+		{!!Form::submit('Go!')!!}
 
-		    <!-- Add Task Button -->
-		    <div class="form-group">
-		        <div class="col-sm-offset-3 col-sm-6">
-		            <a href="googlesearchperson">
-		            	<button type="submit" class="btn btn-default">
-		                	<i class="fa fa-plus"></i> Search!
-		            	</button>
-		            </a>
-		        </div>
-		    </div>
-		</form>
-	</div>
-
-
-
+		{!!Form::close()!!}
 @endsection

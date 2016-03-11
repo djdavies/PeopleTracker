@@ -27,10 +27,14 @@ class GoogleResultsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //TODO: query as param.
-        $query = 'Daniel%20Davies%20cardiff%20university';
+        // $query = 'Daniel%20Davies%20cardiff%20university';
+        $query = $request->input('query');
+
+        // Convert spaces to %20
+        $query = rawurlencode($query);
 
         // Looping it will fetch me more than 8 results, but contain duplicates.
         // for ( $i= 1; $i < 100; $i+8 ) {
