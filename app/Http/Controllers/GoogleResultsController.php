@@ -9,6 +9,7 @@ use App\GoogleResults;
 use App\Data;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use File;
 
 class GoogleResultsController extends Controller
 {
@@ -53,8 +54,13 @@ class GoogleResultsController extends Controller
             echo "<br>Content: ";
             echo $json->responseData->results[$x]->content;
             echo "<br><br>";
-
     }
+
+    File::append('doesthiswork', 'test');
+
+
+
+    return view('googleSearchResults', ['query' => $query]);
         //  $i+=8;
     // }
 

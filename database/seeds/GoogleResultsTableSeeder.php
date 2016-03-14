@@ -12,7 +12,7 @@ class GoogleResultsTableSeeder extends Seeder
     public function run()
     {
 
-    	$raw = File::get(storage_path() . '/GoogleResults.json')
+    	$raw = File::get(storage_path() . '/GoogleResults.json');
         $json = json_decode($raw, true);
 
         if ($json) {
