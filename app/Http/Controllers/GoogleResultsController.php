@@ -43,23 +43,25 @@ class GoogleResultsController extends Controller
         $body = file_get_contents($url);
         $json = json_decode($body);
 
-        for($x=0;$x<count($json->responseData->results);$x++){
-            echo "<b>Result ".($x+1)."</b>";
-            echo "<br>URL: ";
-            echo $json->responseData->results[$x]->url;
-            echo "<br>VisibleURL: ";
-            echo $json->responseData->results[$x]->visibleUrl;
-            echo "<br>Title: ";
-            echo $json->responseData->results[$x]->title;
-            echo "<br>Content: ";
-            echo $json->responseData->results[$x]->content;
-            echo "<br><br>";
-    }
+        $filename = rawurldecode($query);
+        $filenameUnderscores = str_replace(' ', '_', $filename);
+        File::put($filenameUnderscores . '.json', $body);
+    // echo "<b>The following search results have been saved to a file: public/".$filename;
 
-    $filename = rawurldecode($query);
-    // $fileContents = $body;
-    File::put($filename, $body);
-    echo "<b>The following search results have been saved to a file: public/".$filename;
+    //     for($x=0;$x<count($json->responseData->results);$x++){
+    //         echo "<b>Result ".($x+1)."</b>";
+    //         echo "<br>URL: ";
+    //         echo $json->responseData->results[$x]->url;
+    //         echo "<br>VisibleURL: ";
+    //         echo $json->responseData->results[$x]->visibleUrl;
+    //         echo "<br>Title: ";
+    //         echo $json->responseData->results[$x]->title;
+    //         echo "<br>Content: ";
+    //         echo $json->responseData->results[$x]->content;
+    //         echo "<br><br>";
+    // }
+
+    return view('googleSearchResults', ['query' => $query, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);
 
         //  $i+=8;
     // }

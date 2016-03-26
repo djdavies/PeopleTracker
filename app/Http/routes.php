@@ -33,7 +33,7 @@
 Route::group(['middleware' => ['web']], function () {
 
 	Route::get('/', function () {
-    	return view('layouts.master');
+    	return view('home');
 	});
 
     Route::get('people', 'PeopleController@showAllPeople');
@@ -47,6 +47,6 @@ Route::group(['middleware' => ['web']], function () {
     });
 
     // The JSON results
-    Route::resource('googlesearchperson/', 'GoogleResultsController@create');
+    Route::resource('googlesearchresults/', 'GoogleResultsController@create');
     
 });

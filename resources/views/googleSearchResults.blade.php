@@ -1,0 +1,30 @@
+@extends('layouts.master')
+
+@section('title')
+	Google Search Results
+@endsection
+
+@section('content')
+
+	Results for: <em>{{{ $filename}}}
+	<br> 
+	File containing search results was saved at: <strong>public/{{{ $filenameUnderscores }}}.json</strong>
+	<hr>
+	<br>
+
+     @for ($x = 0; $x<count($json->responseData->results); $x++ )
+     	<br>
+     	<strong>Result {{{ $x+1 }}}</strong>
+     	<br>
+     	<strong>URL:</strong>  {{{ $json->responseData->results[$x]->url }}}
+     	<br>
+     	<strong>Visible URL:</strong> {{{ $json->responseData->results[$x]->visibleUrl }}}
+     	<br>
+     	<strong>Title:</strong> {{{ $json->responseData->results[$x]->title }}}
+     	<br>
+     	<strong>Content:</strong> {{{ $json->responseData->results[$x]->content }}}
+     	<hr>
+    @endfor 	
+
+
+@endsection

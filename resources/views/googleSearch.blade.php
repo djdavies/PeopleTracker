@@ -6,7 +6,7 @@
 
 @section('content')
 
-	{!! Form::open(array('url' => array('googlesearchperson'))) !!}
+	{!! Form::open(array('url' => array('googlesearchresults'))) !!}
 
 	{!! Form::label('query', 'Search Query') !!}
 	{!!Form::text('query', '', [
