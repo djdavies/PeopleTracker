@@ -56,11 +56,11 @@ class GoogleResultsController extends Controller
             echo "<br><br>";
     }
 
-    File::append('doesthiswork', 'test');
+    $filename = rawurldecode($query);
+    // $fileContents = $body;
+    File::put($filename, $body);
+    echo "<b>The following search results have been saved to a file: public/".$filename;
 
-
-
-    return view('googleSearchResults', ['query' => $query]);
         //  $i+=8;
     // }
 
@@ -74,7 +74,7 @@ class GoogleResultsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

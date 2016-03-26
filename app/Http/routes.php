@@ -46,6 +46,7 @@ Route::group(['middleware' => ['web']], function () {
         return view('googleSearch');
     });
 
+    // The JSON results
     Route::resource('googlesearchperson/', 'GoogleResultsController@create');
     
 });
