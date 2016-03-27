@@ -8,7 +8,7 @@
 
 	Results for: <em>{{{ $filename}}}
 	<br> 
-	File containing search results was saved at: <strong>public/{{{ $filenameUnderscores }}}.json</strong>
+	File containing search results was saved at: <strong>public/{{{ $filenameUnderscores }}}.json</strong> -- please <a href="/seeding">seed</a> this file.
 	<hr>
 	<br>
 

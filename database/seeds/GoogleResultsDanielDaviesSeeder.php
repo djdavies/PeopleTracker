@@ -32,7 +32,7 @@ class GoogleResultsDanielDaviesSeeder extends Seeder
 					'people_id' => $people->id,
 					'title' => $object->title,
 					'url' => $object->url,
-			]);
+			    ]);
 			} // end foreach
         } // end if.
         $people->save();

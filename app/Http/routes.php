@@ -36,6 +36,10 @@ Route::group(['middleware' => ['web']], function () {
     	return view('home');
 	});
 
+    Route::get('/seeding', function () {
+        return view('seeding');
+    });
+
     Route::get('people', 'PeopleController@showAllPeople');
     Route::get('people/{id}/', 'PeopleController@showPerson');
 
