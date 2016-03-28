@@ -34,10 +34,13 @@ class GoogleResultsController extends Controller
         // $query = 'Daniel%20Davies%20cardiff%20university';
         $query = $request->input('query');
 
+        $queryWithSpaces = $query;
+
         // Convert spaces to %20
         $query = rawurlencode($query);
 
-        // Looping it will fetch me more than 8 results, but contain duplicates.
+        // Looping it will fetch me more than 8 results, but contain duplicates. 
+        // TODO: Doesn't seem to be a way to paginate results via Google search API?
         // for ( $i= 1; $i < 100; $i+8 ) {
         $url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=large&start=0&q==".$query;
         $body = file_get_contents($url);
@@ -45,21 +48,18 @@ class GoogleResultsController extends Controller
 
         $filename = rawurldecode($query);
         $filenameUnderscores = str_replace(' ', '_', $filename);
-        File::put($filenameUnderscores . '.json', $body);
-    // echo "<b>The following search results have been saved to a file: public/".$filename;
 
-    //     for($x=0;$x<count($json->responseData->results);$x++){
-    //         echo "<b>Result ".($x+1)."</b>";
-    //         echo "<br>URL: ";
-    //         echo $json->responseData->results[$x]->url;
-    //         echo "<br>VisibleURL: ";
-    //         echo $json->responseData->results[$x]->visibleUrl;
-    //         echo "<br>Title: ";
-    //         echo $json->responseData->results[$x]->title;
-    //         echo "<br>Content: ";
-    //         echo $json->responseData->results[$x]->content;
-    //         echo "<br><br>";
-    // }
+        // String opertation: delete last '}' in file, add
+        // , \n "query":$query
+        // $addQueryToJson = ",\n\t"."\"query\": "."\"".$queryWithSpaces."\""."}";
+        // $bodyWithQuery = substr($body, 0, -1).$addQueryToJson;
+
+        // $json2file = File::put($filenameUnderscores . '.json', $bodyWithQuery);
+        File::put($filenameUnderscores . '.json', $body);
+
+        // if ($json2file === false) {
+        //     die("Error writing JSON to file.");
+        // }
 
     return view('googleSearchResults', ['query' => $query, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);
 
