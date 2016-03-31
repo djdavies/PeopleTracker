@@ -1,41 +1,18 @@
 <?php
+/* 
+	Test that I can access the serialized object values and the array values within nested objects.
+*/
 
-use Illuminate\Database\Seeder;
+$file = file_get_contents("../../public/oliver_cumming.json");
 
-class GoogleResultsOliverCummingSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-    	// Clear data, to avoid dupes.
-    	// DB::table('people')->truncate();
-    	// DB::table('google_results')->truncate();
+$jsonDe = json_decode($file);
 
-    	// $people = App\People::whereName('Daniel Davies')->first();
+$numResults = count($jsonDe->responseData->results);
 
-        $resultJson = File::get(storage_path() . '/oliver_cumming.json');
-        $result = json_decode($resultJson);
+echo $numResults;
 
-        if ($result) {
-        	// TODO: the name will be supplied via web UI.
-           	$people = App\People::create([
-    		'name' => 'Oliver Cumming'
-    	]);
-        	// Add results.
-        	foreach ($result as $object) {
-				$google = App\GoogleResults::create([
-					'content' => $object->content,
-					'people_id' => $people->id,
-					'title' => $object->title,
-					'url' => $object->url,
-			    ]);
-			} // end foreach
-        } // end if.
-        $people->save();
-    	$google->save();
-    } // end func.
-} // end class.
+for ($n = 0; $n < $numResults; $n++) {
+		echo "URL: " . $jsonDe->responseData->results[$n]->url, "CONTENT: " . $jsonDe->responseData->results[$n]->content, "TITLE: " .$jsonDe->responseData->results[$n]->title;
+}
+
+?>

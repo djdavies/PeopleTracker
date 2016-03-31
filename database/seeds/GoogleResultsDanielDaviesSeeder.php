@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\People;
 
 class GoogleResultsDanielDaviesSeeder extends Seeder
 {
@@ -15,19 +16,17 @@ class GoogleResultsDanielDaviesSeeder extends Seeder
     	// DB::table('people')->truncate();
     	// DB::table('google_results')->truncate();
 
-    	// $people = App\People::whereName('Daniel Davies')->first();
-
         $resultJson = File::get(storage_path() . '/GoogleResults.json');
         $result = json_decode($resultJson);
 
         if ($result) {
         	// TODO: the name will be supplied via web UI.
            	$people = App\People::create([
-    		'name' => 'Daniel Davies Seeding'
+    		'name' => 'Daniel Davies'
     	]);
         	// Add results.
         	foreach ($result as $object) {
-				$google = App\GoogleResults::create([
+				$google = GoogleResults::create([
 					'content' => $object->content,
 					'people_id' => $people->id,
 					'title' => $object->title,

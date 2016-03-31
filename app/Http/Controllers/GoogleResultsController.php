@@ -33,6 +33,7 @@ class GoogleResultsController extends Controller
         //TODO: query as param.
         // $query = 'Daniel%20Davies%20cardiff%20university';
         $query = $request->input('query');
+        $name = $request->input('name');
 
         $queryWithSpaces = $query;
 
@@ -49,19 +50,9 @@ class GoogleResultsController extends Controller
         $filename = rawurldecode($query);
         $filenameUnderscores = str_replace(' ', '_', $filename);
 
-        // String opertation: delete last '}' in file, add
-        // , \n "query":$query
-        // $addQueryToJson = ",\n\t"."\"query\": "."\"".$queryWithSpaces."\""."}";
-        // $bodyWithQuery = substr($body, 0, -1).$addQueryToJson;
-
-        // $json2file = File::put($filenameUnderscores . '.json', $bodyWithQuery);
         File::put($filenameUnderscores . '.json', $body);
 
-        // if ($json2file === false) {
-        //     die("Error writing JSON to file.");
-        // }
-
-    return view('googleSearchResults', ['query' => $query, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);
+    return view('googleSearchResults', ['query' => $query, 'name' => $name, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);
 
         //  $i+=8;
     // }

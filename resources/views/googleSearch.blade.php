@@ -8,6 +8,11 @@
 
 	{!! Form::open(array('url' => array('googlesearchresults'))) !!}
 
+	{!! Form::label('name', 'Name of Person') !!}
+	{!! Form::text('name', '', [
+		'placeholder' => 'e.g. Daniel Davies'
+		]) !!}
+
 	{!! Form::label('query', 'Search Query') !!}
 	{!!Form::text('query', '', [
 		'placeholder' => "e.g. Daniel Davies Cardiff University"

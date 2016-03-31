@@ -6,7 +6,9 @@
 
 @section('content')
 
-	Results for: <em>{{{ $filename}}}
+     Person you searched for: <em>{{{ $name }}}</em>
+     <br>
+	Search query you use: <em>{{{ $filename}}}
 	<br> 
 	File containing search results was saved at: <strong>public/{{{ $filenameUnderscores }}}.json</strong> -- please <a href="/seeding">seed</a> this file.
 	<hr>
