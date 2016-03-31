@@ -20,30 +20,26 @@ class GoogleResultsLinusTorvaldsSeeder extends Seeder
 
     	// $people = App\People::whereName('Daniel Davies')->first();
 
-        $resultJson = File::get(storage_path() . '/oliver_cumming.json');
+        $resultJson = File::get(storage_path() . '/oliver_cumming_cardiff.json');
         $result = json_decode($resultJson);
 
         if ($result) {
-        	echo "Result found true";
         	// TODO: the name will be supplied via the 'query' in the JSON or Web UI.
            	$people = People::create([
-    			'name' => 'Oliver Cumming'
+    			'name' => $result->name
     	]);
 
-	        $numResults = count($result->responseData->results);
-	        echo "Number of results: " . $numResults;
+            echo "QUERY: " . $result->query;
 	        
-	        for ($n = 0; $n < $numResults; $n++) {
-		        foreach ($result as $object) {
+	        for ($n = 0; $n < count($result->responseData->results); $n++) {
 					$google = App\GoogleResults::create([
 						'content' => $result->responseData->results[$n]->content,
 						'people_id' => $people->id,
 						'title' => $result->responseData->results[$n]->title,
 						'url' => $result->responseData->results[$n]->url,
+                        'query' => $result->query,
 					]);
-					$n+=1;
-					echo "N is now: " . $n;
-				} //end foreach
+                    echo "N is now: " . $n . "\n";
 			} // end for
         } // end if.
         $people->save();

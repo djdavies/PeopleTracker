@@ -50,7 +50,11 @@ class GoogleResultsController extends Controller
         $filename = rawurldecode($query);
         $filenameUnderscores = str_replace(' ', '_', $filename);
 
-        File::put($filenameUnderscores . '.json', $body);
+        // Delete last '}' and replace with ,"query":"$query","name":"$name"}
+        $replacement = ",\"query\":\"$queryWithSpaces\",\"name\":\"$name\"}";    // What you want to replace the last character with
+        // The final string
+        $finalBody = substr($body, 0, -1).$replacement;  
+        File::put($filenameUnderscores . '.json', $finalBody);
 
     return view('googleSearchResults', ['query' => $query, 'name' => $name, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);
 
