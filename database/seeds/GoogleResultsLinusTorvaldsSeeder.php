@@ -37,7 +37,7 @@ class GoogleResultsLinusTorvaldsSeeder extends Seeder
 						'people_id' => $people->id,
 						'title' => $result->responseData->results[$n]->title,
 						'url' => $result->responseData->results[$n]->url,
-                        'query' => $result->query,
+                        'query' => $result->query
 					]);
                     echo "N is now: " . $n . "\n";
 			} // end for
