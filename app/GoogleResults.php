@@ -11,8 +11,4 @@ class GoogleResults extends Model
     public function googleResults() {
     	return $this->belongsTo('People');
     }
-
-    public function data() {
-        return $this->hasOne('Data');
-    }
 }

@@ -3,6 +3,8 @@
 @section('content')
 
 <h1>Profile for: {{{ $person->name }}}</h1>
+<p>Here are all the current results. Please mark these results as correct or incorrect.</p>
+<p>Once completed: <a href="{{{ $person->id }}}/prune">Prune Correct Results Content Data</a></p>
 
 <div class="people">
         @if($person)

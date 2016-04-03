@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDataTable extends Migration
+class CreatePrunesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('data', function (Blueprint $table) {
+        Schema::create('prunes', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('googleResults_id');
             $table->string('content_data');
@@ -26,6 +26,6 @@ class CreateDataTable extends Migration
      */
     public function down()
     {
-        Schema::drop('data');
+        Schema::drop('prunes');
     }
 }

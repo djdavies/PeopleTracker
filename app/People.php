@@ -15,4 +15,8 @@ class People extends Model
     public function fbResults() {
     	return $this->hasOne('FbResults');
     }
+
+    public function prunes() {
+        return $this->hasOne('Prunes');
+    }
 }

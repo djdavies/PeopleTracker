@@ -15,7 +15,7 @@
 
 	{!! Form::label('query', 'Search Query') !!}
 	{!!Form::text('query', '', [
-		'placeholder' => "e.g. Daniel Davies Cardiff University"
+		'placeholder' => "e.g. Cardiff University"
 		])!!}
 
 		{!!Form::submit('Go!')!!}

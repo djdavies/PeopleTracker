@@ -7,7 +7,14 @@
 @section('content')
     <div class="jumbotron">
   <h1>People Tracker</h1>
-  <p>Perform a Google Search, and get results back in JSON. This file will then be seeded into the database, and the fun will begin...</p>
+  <p>Perform a Google Search, and get results back in JSON. This file will then be <a href="/seeding">seeded</a> into the database, and the fun will begin...</p>
+  <ul class="list-group">
+  <li class="list-group-item">View all people's results, e.g. all results for Daniel Davies.</li>
+  <li class="list-group-item">View the search queries used to populate these results, e.g. daniel davies cardiff university.</li>
+  <li class="list-group-item">Mark each result for the person as correct, or incorrect.</li>
+  <li class="list-group-item">See success rates for search queries. Which queries are the best to use to track someone down?</li>
+
+  </ul>
   <h3>Project progress:</h3>
   <div class="alert alert-warning" role="alert">List of project features, and developer tasks.</div>
   <ul class="list-group">

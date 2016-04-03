@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\People;
+use App\GoogleResults;
+use App\Prunes;
 
 class GoogleResultsLinusTorvaldsSeeder extends Seeder
 {
@@ -28,18 +30,15 @@ class GoogleResultsLinusTorvaldsSeeder extends Seeder
            	$people = People::create([
     			'name' => $result->name
     	]);
-
-            echo "QUERY: " . $result->query;
 	        
 	        for ($n = 0; $n < count($result->responseData->results); $n++) {
-					$google = App\GoogleResults::create([
+					$google = GoogleResults::create([
 						'content' => $result->responseData->results[$n]->content,
 						'people_id' => $people->id,
 						'title' => $result->responseData->results[$n]->title,
 						'url' => $result->responseData->results[$n]->url,
                         'query' => $result->query
 					]);
-                    echo "N is now: " . $n . "\n";
 			} // end for
         } // end if.
         $people->save();

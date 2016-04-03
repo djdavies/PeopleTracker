@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\People;
 use App\GoogleResults;
-use App\Data;
+use App\Prunes;
 use App\Http\Controllers\Controller;
 
 class PeopleController extends Controller
@@ -20,8 +20,10 @@ class PeopleController extends Controller
         $googleResults = GoogleResults::wherePeopleId($id)->get();
 
         return view('person', 
-            ['person' => People::findOrFail($id),
-            'googleResults' => $googleResults]);
+            [
+                'person' => People::findOrFail($id),
+                'googleResults' => $googleResults
+            ]);
     }
 
     // Show profiles for all users.

@@ -43,6 +43,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('people', 'PeopleController@showAllPeople');
     Route::get('people/{id}/', 'PeopleController@showPerson');
 
+    Route::get('people/{id}/prune', 'GoogleResultsController@showCorrectVals');
+
     Route::resource('people/googleresult/{id}/', 'GoogleResultsController@update');
 
     // Google People Search Page.
@@ -50,7 +52,10 @@ Route::group(['middleware' => ['web']], function () {
         return view('googleSearch');
     });
 
-    // The JSON results
+    // The JSON results.
     Route::resource('googlesearchresults/', 'GoogleResultsController@create');
+
+    // Pruned data.
+    Route::resource('people/prune/{id}/', 'PrunesController@create');
     
 });
