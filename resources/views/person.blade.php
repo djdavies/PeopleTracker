@@ -6,6 +6,12 @@
 <p>Here are all the current results. Please mark these results as correct or incorrect.</p>
 <p>Once completed: <a href="{{{ $person->id }}}/prune">Prune Correct Results Content Data</a></p>
 
+@if(Session::has('flash_message'))
+    <div class="alert alert-success">
+        {{ Session::get('flash_message') }}
+    </div>
+@endif
+
 <div class="people">
         @if($person)
             @foreach ($googleResults as $googleResult)
@@ -16,18 +22,19 @@
         <li class="list-group-item"><span class="label label-primary">URL</span><br>{{{ $googleResult->url }}}</li>
         <li class="list-group-item">
             Correct result?
-            <a href="googleresult/{{$googleResult->id}}">
+            <a href="googleresult/{{$googleResult->id}}/correct">
                 <button type="button" class="btn btn-default" aria-label="Left Align">
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                 </button>
             </a>
-            <button type="button" class="btn btn-default" aria-label="Left Align">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            </button>
+            <a href="googleresult/{{$googleResult->id}}/incorrect">
+                <button type="button" class="btn btn-default" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+            </a>
         </li>
     </ul>
-            @endforeach    
+            @endforeach   
         @endif
- </div>   
-
+ </div>
 @endsection

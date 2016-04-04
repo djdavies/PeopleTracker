@@ -5,7 +5,7 @@ use App\People;
 use App\GoogleResults;
 use App\Prunes;
 
-class GoogleResultsLinusTorvaldsSeeder extends Seeder
+class GoogleResultsRachelLyonCardiff extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,19 +14,16 @@ class GoogleResultsLinusTorvaldsSeeder extends Seeder
      */
     public function run()
     {
-    	// Clear data, to avoid dupes.
+        // Clear data, to avoid dupes.
     	// Truncate the person, by name variable (TODO).
     	// DB::table('people')->truncate();
     	// Truncate all results related to this person (TODO).
     	// DB::table('google_results')->truncate();
 
-    	// $people = App\People::whereName('Daniel Davies')->first();
-
-        $resultJson = File::get(storage_path() . '/linus_torvalds_linux.json');
+        $resultJson = Storage::get('rachel_lyon_cardiff.json');
         $result = json_decode($resultJson);
 
         if ($result) {
-        	// TODO: the name will be supplied via the 'query' in the JSON or Web UI.
            	$people = People::create([
     			'name' => $result->name
     	]);
@@ -43,5 +40,7 @@ class GoogleResultsLinusTorvaldsSeeder extends Seeder
         } // end if.
         $people->save();
     	$google->save();
-    } // end func.
-} // end class.
+
+        Storage::delete('rachel_lyon_cardiff.json');
+    }
+}

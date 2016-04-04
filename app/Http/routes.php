@@ -45,7 +45,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('people/{id}/prune', 'GoogleResultsController@showCorrectVals');
 
-    Route::resource('people/googleresult/{id}/', 'GoogleResultsController@update');
+    Route::resource('people/googleresult/{id}/correct', 'GoogleResultsController@update');
+    Route::resource('people/googleresult/{id}/incorrect', 'GoogleResultsController@updateIncorrect');
 
     // Google People Search Page.
     Route::get('/googlesearch', function() {

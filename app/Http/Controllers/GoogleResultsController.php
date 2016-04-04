@@ -10,6 +10,7 @@ use App\Prunes;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Storage;
+use Session;
 
 class GoogleResultsController extends Controller
 {
@@ -49,8 +50,9 @@ class GoogleResultsController extends Controller
         // for ( $i= 1; $i < 100; $i+8 ) {
         $url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=large&start=0&q==".$nameAndQueryUrlEncode;
         $body = file_get_contents($url);
-        $json = json_decode($body);
-
+        // Strip HTML tags
+        $bodyNoTags = strip_tags($body);
+        $json = json_decode($bodyNoTags);
         $filename = rawurldecode($nameAndQuery);
         $filenameUnderscores = str_replace(' ', '_', $filename);
 
@@ -121,12 +123,24 @@ class GoogleResultsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //TODO: make the 'incorrect' button set it back to 0.
-        // Another function possibly easiest way -- most elegant
-        // would be to check if it's 0 or 1, etc...
         GoogleResults::
             where('id', $id)
             ->update(['correct' => 1]);
+
+    Session::flash('flash_message', 'Data updated to: CORRECT.');
+
+    return redirect()->back();
+    }
+
+    public function updateIncorrect(Request $request, $id)
+    {
+        GoogleResults::
+            where('id', $id)
+            ->update(['correct' => 0]);
+
+    Session::flash('flash_message', 'Data updated to: INCORRECT.');
+
+    return redirect()->back(); 
     }
 
     /**
