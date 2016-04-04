@@ -22,7 +22,7 @@ class GoogleResultsLinusTorvaldsSeeder extends Seeder
 
     	// $people = App\People::whereName('Daniel Davies')->first();
 
-        $resultJson = File::get(storage_path() . '/oliver_cumming_cardiff.json');
+        $resultJson = File::get(storage_path() . '/linus_torvalds_linux.json');
         $result = json_decode($resultJson);
 
         if ($result) {

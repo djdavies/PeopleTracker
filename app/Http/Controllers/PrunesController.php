@@ -29,20 +29,18 @@ class PrunesController extends Controller
      */
     public function create(Request $request, $id)
     {
-        // Get comma-separated values from the form.
-        $prunedresults = $request->input('data');
-
-        echo $prunedresults;
-
-        echo $id;
-        
-        // Insert values into DB.
         if ($request) {
-            $prune = Prunes::insert([
-                // TODO: migration to change column name, see Reminders.
-                'people_id' => $id,
-                'data' => $prunedresults
-            ]);
+            // Get comma-separated values from the form.
+            $prunedArray = explode(',', $pruned);
+            print_r($prunedArray);
+
+            // Insert values into DB.
+            foreach ($prunedArray as $pruneData) {
+                $prune = new Prunes;
+                $prune->people_id = $id;
+                $prune->data = $pruneData;
+                $prune->save();
+            }
         }
     }
 

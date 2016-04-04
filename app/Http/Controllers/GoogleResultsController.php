@@ -9,7 +9,7 @@ use App\GoogleResults;
 use App\Prunes;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use File;
+use Storage;
 
 class GoogleResultsController extends Controller
 {
@@ -51,14 +51,14 @@ class GoogleResultsController extends Controller
         $body = file_get_contents($url);
         $json = json_decode($body);
 
-        $filename = rawurldecode($query);
+        $filename = rawurldecode($nameAndQuery);
         $filenameUnderscores = str_replace(' ', '_', $filename);
 
         // Delete last '}' and replace with ,"query":"$query","name":"$name"}
         $replacement = ",\"query\":\"$queryWithSpaces\",\"name\":\"$name\"}";
         // The final string
         $finalBody = substr($body, 0, -1).$replacement;  
-        File::put($filenameUnderscores . '.json', $finalBody);
+        Storage::put($filenameUnderscores . '.json', $finalBody);
 
     return view('googleSearchResults', ['query' => $query, 'name' => $name, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);
 
