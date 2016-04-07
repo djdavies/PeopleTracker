@@ -12,7 +12,7 @@
     </div>
 @endif
 
-<div class="people">
+<div class="person">
         @if($person)
             @foreach ($googleResults as $googleResult)
     <ul class="list-group">

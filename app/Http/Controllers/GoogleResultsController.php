@@ -50,16 +50,14 @@ class GoogleResultsController extends Controller
         // for ( $i= 1; $i < 100; $i+8 ) {
         $url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=large&start=0&q==".$nameAndQueryUrlEncode;
         $body = file_get_contents($url);
-        // Strip HTML tags
-        $bodyNoTags = strip_tags($body);
-        $json = json_decode($bodyNoTags);
+        $json = json_decode($body);
         $filename = rawurldecode($nameAndQuery);
         $filenameUnderscores = str_replace(' ', '_', $filename);
 
         // Delete last '}' and replace with ,"query":"$query","name":"$name"}
         $replacement = ",\"query\":\"$queryWithSpaces\",\"name\":\"$name\"}";
-        // The final string
-        $finalBody = substr($body, 0, -1).$replacement;  
+        // The final string.
+        $finalBody = substr($body, 0, -1).$replacement;
         Storage::put($filenameUnderscores . '.json', $finalBody);
 
     return view('googleSearchResults', ['query' => $query, 'name' => $name, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);

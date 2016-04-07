@@ -3,7 +3,6 @@
 use Illuminate\Database\Seeder;
 use App\People;
 use App\GoogleResults;
-use App\Prunes;
 
 class GoogleResultsLinusTorvaldsLinux extends Seeder
 {

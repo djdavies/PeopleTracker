@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use App\People;
 use App\GoogleResults;
 
-class GoogleResultsRachelLyonCardiff extends Seeder
+class GoogleResultsRachelLyon extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,7 +19,7 @@ class GoogleResultsRachelLyonCardiff extends Seeder
     	// Truncate all results related to this person (TODO).
     	// DB::table('google_results')->truncate();
 
-        $resultJson = Storage::get('rachel_lyon_cardiff.json');
+        $resultJson = Storage::get('rachel_lyon_.json');
         $result = json_decode($resultJson);
 
         if ($result) {
@@ -40,6 +40,6 @@ class GoogleResultsRachelLyonCardiff extends Seeder
         $people->save();
     	$google->save();
 
-        Storage::delete('rachel_lyon_cardiff.json');
+        Storage::delete('rachel_lyon_.json');
     }
 }

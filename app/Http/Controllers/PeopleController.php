@@ -30,7 +30,8 @@ class PeopleController extends Controller
     public function showAllPeople() {
 
         $people = People::all();
+        $googleResults = GoogleResults::all();
 
-        return view ('people', ['people' => $people]);
+        return view ('people', ['people' => $people, 'googleResults' => $googleResults]);
     }
 }
