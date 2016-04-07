@@ -40,8 +40,6 @@ class GoogleResultsDanielDaviesCardiff extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            $people->save();
-            $google->save();
             Storage::delete('daniel_davies_cardiff.json');
         } else {
             echo "File not found: ";

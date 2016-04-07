@@ -21,8 +21,6 @@
 		<h3>Enter discovered data</h3>
 		<strong><em>Please use a comma-separated list</em></strong>
 
-		{{{ $person->id }}}
-
 		{!! Form::open(array('url' => array('people/prune', $person->id))) !!}
 		{!! Form::label('dataFound', 'Data Found') !!}
 

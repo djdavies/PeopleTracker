@@ -40,8 +40,6 @@ class GoogleResultsDanielDavies extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            $people->save();
-        	$google->save();
             Storage::delete('daniel_davies_.json');
         } else {
             echo "File not found: ";
