@@ -2,50 +2,65 @@
 
 @section('content')
 
-<h1>Profile for: {{{ $person->name }}}</h1>
-<p>Here are all the current results. Please mark these results as correct or incorrect.</p>
-<p><em>NB: results are assumed incorrect. Colourblind mode coming soon.</em></p>
-<p>Once completed: <a href="{{{ $person->id }}}/prune">Prune Correct Results Content Data</a></p>
+    <h1>Profile for: {{{ $person->name }}}</h1>
+    <p>Here are all the current results. Please mark these results as correct or incorrect.</p>
+    <p><em>NB: results are assumed incorrect. Colourblind mode coming soon.</em></p>
+    <p>Once completed: <a href="{{{ $person->id }}}/prune">Prune Correct Results Content Data</a></p>
 
-@if(Session::has('flash_message'))
-    <div class="alert alert-success">
-        {{ Session::get('flash_message') }}
-    </div>
-@endif
+    <div class="person">
+        @if(Session::has('flash_message'))
+            <div class="alert alert-info">
+                {{ Session::get('flash_message') }}
+            </div>
+        @endif  
 
-<div class="person">
         @if($person)
             @foreach ($googleResults as $googleResult)
-    <ul class="list-group">
-        <span class="label label-default">Google Result {{{ $googleResult->id }}}</span>
-        <li class="list-group-item"><span class="label label-primary">Title</span><br>{{{ $googleResult->title }}}</li>
-        <li class="list-group-item"><span class="label label-primary">Content</span><br>{{{ $googleResult->content }}}</li>
-        <li class="list-group-item"><span class="label label-primary">URL</span><br>{{{ $googleResult->url }}}</li>
-        <li class="list-group-item"><span class="label label-primary">Current marking</span><br>
-        @if($googleResult->correct == 0)
-            <div class="alert alert-danger" role="alert">Incorrect.
-        @else
-            <div class="alert alert-success" role="alert">Correct!
-        @endif        
-            </div>
-        </li>
-        <li class="list-group-item">
-            Correct result?
-            <a href="googleresult/{{$googleResult->id}}/correct">
-                <button type="button" class="btn btn-default" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                </button>
-            </a>
-            <a href="googleresult/{{$googleResult->id}}/incorrect">
-                <button type="button" class="btn btn-default" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </a>
+                <ul class="list-group">
+                    <span class="label label-default" id="{{{ $googleResult->id }}}">
+                        Google Result {{{ $googleResult->id }}}
+                    </span>
 
-            
-        </li>
-    </ul>
-            @endforeach   
+                    <li class="list-group-item">
+                        <span class="label label-primary">Title</span>
+                        <br>
+                        {{{ $googleResult->title }}}
+                    </li>
+                    <li class="list-group-item">
+                        <span class="label label-primary">Content</span>
+                        <br>
+                        {{{ $googleResult->content }}}
+                    </li>
+                    <li class="list-group-item">
+                        <span class="label label-primary">URL</span>
+                        <br>
+                        {{{ $googleResult->url }}}
+                    </li>
+                    <li class="list-group-item">
+                        <span class="label label-primary">Current marking</span>
+                        <br>
+                        @if($googleResult->correct == 0)
+                            <div class="alert alert-danger" role="alert">Incorrect.
+                        @else
+                            <div class="alert alert-success" role="alert">Correct!
+                        @endif        
+                            </div>
+                    </li>
+                    <li class="list-group-item">
+                        Correct result?
+                        <a href="/googleresult/{{$googleResult->id}}/correct">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </button>
+                        </a>
+                        <a href="/googleresult/{{$googleResult->id}}/incorrect">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            @endforeach 
         @endif
- </div>
+    </div>
 @endsection

@@ -11,6 +11,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Storage;
 use Session;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class GoogleResultsController extends Controller
 {
@@ -127,7 +129,7 @@ class GoogleResultsController extends Controller
 
     Session::flash('flash_message', 'Data updated to: CORRECT.');
 
-    return redirect()->back();
+    return Redirect::to(URL::previous() . "#$id");
     }
 
     public function updateIncorrect(Request $request, $id)
@@ -138,7 +140,7 @@ class GoogleResultsController extends Controller
 
     Session::flash('flash_message', 'Data updated to: INCORRECT.');
 
-    return redirect()->back(); 
+    return Redirect::to(URL::previous() . "#$id");
     }
 
     /**
