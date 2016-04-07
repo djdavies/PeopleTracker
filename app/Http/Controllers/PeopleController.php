@@ -26,12 +26,11 @@ class PeopleController extends Controller
             ]);
     }
 
-    // Show profiles for all users.
+    // Show profiles for all users: name and query.
     public function showAllPeople() {
 
         $people = People::all();
-        $googleResults = GoogleResults::all();
 
-        return view ('people', ['people' => $people, 'googleResults' => $googleResults]);
+        return view ('people', ['people' => $people]);
     }
 }
