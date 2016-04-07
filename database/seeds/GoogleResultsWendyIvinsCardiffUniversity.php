@@ -13,33 +13,36 @@ class GoogleResultsWendyIvinsCardiffUniversity extends Seeder
      */
     public function run()
     {
-        // Clear data, to avoid dupes.
-    	// Truncate the person, by name variable (TODO).
-    	// DB::table('people')->truncate();
-    	// Truncate all results related to this person (TODO).
-    	// DB::table('google_results')->truncate();
-
         $resultJson = Storage::get('wendy_ivins_cardiff_university.json');
         $result = json_decode($resultJson);
-
+        
         if ($result) {
-           	$people = People::create([
-    			'name' => $result->name
-    	]);
-	        
-	        for ($n = 0; $n < count($result->responseData->results); $n++) {
-					$google = GoogleResults::create([
-						'content' => $result->responseData->results[$n]->content,
-						'people_id' => $people->id,
-						'title' => $result->responseData->results[$n]->title,
-						'url' => $result->responseData->results[$n]->url,
-                        'query' => $result->query
-					]);
-			} // end for
-        } // end if.
-        $people->save();
-    	$google->save();
+            // Check if the $result->name already exists in the DB.
+            if (!People::where('name', '=', $result->name)->exists()) {
+                echo "Not a person existing with name of ". $result->name . ", creating...\n";
+                People::create([
+                    'name' => $result->name
+                ]);
+            } else {
+                echo $result->name . " already exists, creating results.";
+            }    
 
-        Storage::delete('wendy_ivins_cardiff_university.json');
+            $peopleId = People::select('id')->where('name', '=', $result->name)->first();
+
+            echo "PeopleId is: " . $peopleId;
+            // Iterate through objects and create results in DB.
+            for ($n = 0; $n < count($result->responseData->results); $n++) {
+                $google = GoogleResults::create([
+                    'content' => $result->responseData->results[$n]->content,
+                    'people_id' => $peopleId->id,
+                    'title' => $result->responseData->results[$n]->title,
+                    'url' => $result->responseData->results[$n]->url,
+                    'query' => $result->query
+                ]);
+            } // end for
+            Storage::delete('wendy_ivins_cardiff_university.json');
+        } else {
+            echo "File not found: ";
+        } 
     }
 }

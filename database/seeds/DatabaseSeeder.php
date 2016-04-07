@@ -13,13 +13,13 @@ class DatabaseSeeder extends Seeder
     {
     	// $this->call(GoogleResultsDanielDavies::class);
     	// $this->call(GoogleResultsDanielDaviesCardiff::class);
-    	$this->call(GoogleResultsDanielDaviesCardiffUniversity::class);
+    	// $this->call(GoogleResultsDanielDaviesCardiffUniversity::class);
     	// $this->call(GoogleResultsDanielJakeDavies::class);
-    	// $this->call(GoogleResultsJianhuaShao::class);
-    	// $this->call(GoogleResultsJianhuaShaoCardiff::class);
-    	// $this->call(GoogleResultsJianhuaShaoCardiffUniversity::class);
-    	// $this->call(GoogleResultsLinusTorvaldsLinux::class);
-    	// $this->call(GoogleResultsMichaelJuckes::class);
+    	$this->call(GoogleResultsJianhuaShao::class);
+    	$this->call(GoogleResultsJianhuaShaoCardiff::class);
+    	$this->call(GoogleResultsJianhuaShaoCardiffUniversity::class);
+    	$this->call(GoogleResultsLinusTorvalds::class);
+    	$this->call(GoogleResultsMichaelJuckes::class);
     	// $this->call(GoogleResultsMichaelJuckesCardiff::class);
     	// $this->call(GoogleResultsMichaelJuckesCardiffUniversity::class);
     	// $this->call(GoogleResultsMichaelPaulJuckes::class);
