@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use App\People;
 use App\GoogleResults;
 
-class GoogleResultsDanielJakeDavies extends Seeder
+class GoogleResultsDanielDaviesJake extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class GoogleResultsDanielJakeDavies extends Seeder
      */
     public function run()
     {
-        $resultJson = Storage::get('daniel_jake_davies_.json');
+        $resultJson = Storage::get('daniel_davies_jake.json');
         $result = json_decode($resultJson);
         
         if ($result) {
@@ -40,7 +40,7 @@ class GoogleResultsDanielJakeDavies extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('daniel_jake_davies_.json');
+            Storage::delete('daniel_davies_jake.json');
         } else {
             echo "File not found: ";
         } 

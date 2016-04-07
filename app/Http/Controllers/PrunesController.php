@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\GoogleResults;
 use App\People;
 use App\Prunes;
+use Session;
 
 class PrunesController extends Controller
 {
@@ -30,10 +31,10 @@ class PrunesController extends Controller
     public function create(Request $request, $id)
     {
         if ($request) {
+            $pruned = $request->input('data');
+            // echo $pruned;
             // Get comma-separated values from the form.
             $prunedArray = explode(',', $pruned);
-            print_r($prunedArray);
-
             // Insert values into DB.
             foreach ($prunedArray as $pruneData) {
                 $prune = new Prunes;
@@ -41,6 +42,9 @@ class PrunesController extends Controller
                 $prune->data = $pruneData;
                 $prune->save();
             }
+
+            Session::flash('flash_message', 'Added prune data!');
+            return redirect()->back();
         }
     }
 
