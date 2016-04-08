@@ -91,12 +91,14 @@ class GoogleResultsController extends Controller
         // Get all distinct queries used for the specified id.
         $queryVals = GoogleResults::select('query')->where('people_id', '=', $id)->distinct()->get();
 
+        // Holds the query values, e.g. none, cardiff university, etc.
         $queryCorrect = [];
 
         foreach ($queryVals as $queryVal) {
             array_push($queryCorrect, $queryVal->query);
         }
 
+        // Holds all the correct values for each query.
         $correctsArr = [];
 
         foreach ($queryVals as $queryVal) {
@@ -106,20 +108,27 @@ class GoogleResultsController extends Controller
                     ->where([['query', '=', $queryVal->query],['people_id', '=', $id]])
                     ->get();
 
-                                        // I get 8 results back, need to perform average here.
-                    // But can't seem to access '->correct'
-                    // **** denotes every 8 sections.
+                    // Treat the object result as a string, and cut away all but the numerical value.
                     $strValCorrects = $queryValCorrects . "-";
                     $strValCorrects = str_replace('[{"correct":', '', $strValCorrects);
                     $strValCorrects = str_replace('},{"correct":', '', $strValCorrects);
                     $strValCorrects = str_replace('}]', '', $strValCorrects);
-                    // echo $strValCorrects;
                     $corrects = explode('-', $strValCorrects, -1);
                     array_push($correctsArr, $corrects[0]);
         }                   
 
-        $result = array_combine($queryCorrect, $correctsArr);
-        print_r($result);
+        $queryAndCorrectVal = array_combine($queryCorrect, $correctsArr);
+        $querySumCorrects = [];
+
+        foreach ($queryAndCorrectVal as $key => $value) {
+            $splitCorrectVals = str_split($value);
+            $sumCorrects = array_sum($splitCorrectVals);
+            array_push($querySumCorrects, $sumCorrects);
+        }
+
+        $querySumCorrectsFinal = array_combine($queryCorrect, $querySumCorrects);
+
+        print_r($querySumCorrectsFinal);
 
         return view ('currentResults',
             [
