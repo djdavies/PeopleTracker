@@ -33,8 +33,6 @@ class GoogleResultsController extends Controller
      */
     public function create(Request $request)
     {
-        //TODO: query as param.
-        // $query = 'Daniel%20Davies%20cardiff%20university';
         $query = $request->input('query');
         $name = $request->input('name');
 
@@ -98,7 +96,7 @@ class GoogleResultsController extends Controller
             array_push($queryCorrect, $queryVal->query);
         }
 
-        // Holds all the correct values for each query.
+        // Holds all the correct values for each query (00000000, 00001010, etc -- 8 digits for 8 results!)
         $correctsArr = [];
 
         foreach ($queryVals as $queryVal) {
@@ -108,7 +106,7 @@ class GoogleResultsController extends Controller
                     ->where([['query', '=', $queryVal->query],['people_id', '=', $id]])
                     ->get();
 
-                    // Treat the object result as a string, and cut away all but the numerical value.
+                    // Treat the object result as a string, and cut away all but the numerical value (e.g. 00001111).
                     $strValCorrects = $queryValCorrects . "-";
                     $strValCorrects = str_replace('[{"correct":', '', $strValCorrects);
                     $strValCorrects = str_replace('},{"correct":', '', $strValCorrects);
@@ -117,25 +115,28 @@ class GoogleResultsController extends Controller
                     array_push($correctsArr, $corrects[0]);
         }                   
 
+        // Combine the query with the correct value, e.g query: cardiff, value: 0000000
         $queryAndCorrectVal = array_combine($queryCorrect, $correctsArr);
+        // Array that will hold the sum of result values.
         $querySumCorrects = [];
 
+        // Split every character into a substring, then sum these substrings, push the sub strings into an array.
         foreach ($queryAndCorrectVal as $key => $value) {
             $splitCorrectVals = str_split($value);
             $sumCorrects = array_sum($splitCorrectVals);
             array_push($querySumCorrects, $sumCorrects);
         }
 
-        $querySumCorrectsFinal = array_combine($queryCorrect, $querySumCorrects);
+        // Combine the new summed correct resuluts values with the search queries used.
+        $querySumCorrectsCombine = array_combine($queryCorrect, $querySumCorrects);
 
-        print_r($querySumCorrectsFinal);
+        print_r($querySumCorrectsCombine);
 
-        return view ('currentResults',
-            [
-                'person' => People::findOrFail($id),
-                'queryValCorrects' => $queryValCorrects,
-                'queryVals' => $queryVals
-            ]);
+        // For each results (atm, 0, 1) what percentage was successful?
+        // ATM, max results is 8.
+        // so, use array value divided by elements in array+1 (0-based).
+
+        return view ('currentResults');
     }            
 
 
