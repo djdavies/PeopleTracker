@@ -91,24 +91,41 @@ class GoogleResultsController extends Controller
         // Get all distinct queries used for the specified id.
         $queryVals = GoogleResults::select('query')->where('people_id', '=', $id)->distinct()->get();
 
-        $queriesArray = array();
+        $queryCorrect = [];
 
         foreach ($queryVals as $queryVal) {
-            array_push($queriesArray, $queryVal->query);
+            array_push($queryCorrect, $queryVal->query);
         }
 
-        // Using each query in array, accumulate its 'correct' score, then write to new array.
-        // Hard-code query now, TODO: iterate through them in for loop
-        $queryValCorrects = 
-        GoogleResults::
-        select('correct')
-        ->where([['query', '=', 'cardiff university'],['people_id', '=', $id]])
-        ->get();
+        $correctsArr = [];
+
+        foreach ($queryVals as $queryVal) {
+             $queryValCorrects = 
+                GoogleResults::
+                    select('correct')
+                    ->where([['query', '=', $queryVal->query],['people_id', '=', $id]])
+                    ->get();
+
+                                        // I get 8 results back, need to perform average here.
+                    // But can't seem to access '->correct'
+                    // **** denotes every 8 sections.
+                    $strValCorrects = $queryValCorrects . "-";
+                    $strValCorrects = str_replace('[{"correct":', '', $strValCorrects);
+                    $strValCorrects = str_replace('},{"correct":', '', $strValCorrects);
+                    $strValCorrects = str_replace('}]', '', $strValCorrects);
+                    // echo $strValCorrects;
+                    $corrects = explode('-', $strValCorrects, -1);
+                    array_push($correctsArr, $corrects[0]);
+        }                   
+
+        $result = array_combine($queryCorrect, $correctsArr);
+        print_r($result);
 
         return view ('currentResults',
             [
                 'person' => People::findOrFail($id),
-                'queryValCorrects' => $queryValCorrects
+                'queryValCorrects' => $queryValCorrects,
+                'queryVals' => $queryVals
             ]);
     }            
 
