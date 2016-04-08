@@ -1,8 +1,16 @@
 @extends('layouts.master')
 
 @section('title')
-	Seeding
+	<title>Seeding</title>
 @endsection
+
+@section('css')
+	<link rel="stylesheet" href="{{ URL::asset('css/prism.css') }}" />
+@endsection
+
+@section('js')
+	<script type="text/javascript" src="{{ URL::asset('js/prism.js') }}"></script>
+@endsection	
 
 @section('content')
 	<br>

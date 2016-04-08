@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
+@yield('title')
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- CDN, if preferred -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
-
   <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.min.css') }}" />
-  <link rel="stylesheet" href="{{ URL::asset('css/prism.css') }}" />
+  @yield('css')
 </head>
 <body class="language-php">
 
@@ -32,7 +32,7 @@
 
 <script type="text/javascript" src="{{ URL::asset('js/jquery-1.12.2.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('js/prism.js') }}"></script>
+@yield('js')
 
 </body>
 </html>

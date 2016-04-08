@@ -88,8 +88,30 @@ class GoogleResultsController extends Controller
      */
     public function show($id)
     {
+        // Get all distinct queries used for the specified id.
+        $queryVals = GoogleResults::select('query')->where('people_id', '=', $id)->distinct()->get();
 
-    }
+        $queriesArray = array();
+
+        foreach ($queryVals as $queryVal) {
+            array_push($queriesArray, $queryVal->query);
+        }
+
+        // Using each query in array, accumulate its 'correct' score, then write to new array.
+        // Hard-code query now, TODO: iterate through them in for loop
+        $queryValCorrects = 
+        GoogleResults::
+        select('correct')
+        ->where([['query', '=', 'cardiff university'],['people_id', '=', $id]])
+        ->get();
+
+        return view ('currentResults',
+            [
+                'person' => People::findOrFail($id),
+                'queryValCorrects' => $queryValCorrects
+            ]);
+    }            
+
 
     public function showCorrectVals($id)
     {

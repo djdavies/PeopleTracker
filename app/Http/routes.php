@@ -32,31 +32,35 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-	Route::get('/', function () {
+	// Stand alone pages.
+    Route::get('/', function () {
     	return view('home');
 	});
-
     Route::get('/seeding', function () {
         return view('seeding');
     });
 
+    Route::get('/people/{id}/results', 'GoogleResultsController@show'); 
+
+    Route::get('/currentresults', function () {
+        return view('currentResults');
+    });
+
+    // People show.
     Route::get('people', 'PeopleController@showAllPeople');
     Route::get('people/{id}/', 'PeopleController@showPerson');
-
-    Route::get('people/{id}/prune', 'GoogleResultsController@showCorrectVals');
-
+    
+    // Google results update.
     Route::resource('googleresult/{id}/correct', 'GoogleResultsController@update');
     Route::resource('googleresult/{id}/incorrect', 'GoogleResultsController@updateIncorrect');
-
-    // Google People Search Page.
+    
+    // Google Peform People Search Page and create reuslts.
     Route::get('/googlesearch', function() {
         return view('googleSearch');
     });
-
-    // The JSON results.
     Route::resource('googlesearchresults/', 'GoogleResultsController@create');
-
-    // Pruned data.
-    Route::resource('people/prune/{id}/', 'PrunesController@create');
     
+    // Pruning data.
+    Route::get('people/{id}/prune', 'GoogleResultsController@showCorrectVals');
+    Route::resource('people/prune/{id}/', 'PrunesController@create');
 });
