@@ -9,3 +9,12 @@
 * Determining what is correct data via human input, with further machine learning to train the automation of results determined correct.
 
 * **Very much a work in progress!**
+
+## Installation
+*git clone
+* install composer
+* php composer.phar install
+* php composer.phar update
+* php artisan key:generate
+* cp .env.example env
+* copy the generated key to the .env file APP_KEY variable value 
