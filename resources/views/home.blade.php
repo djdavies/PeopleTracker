@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    People Tracker
+    <title>People Tracker</title>
 @endsection
 
 @section('content')
