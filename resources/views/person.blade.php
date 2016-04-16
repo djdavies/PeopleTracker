@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+    <title>Profile for: {{{ $person->name }}}</title>
+@endsection
+
 @section('content')
 
     <h1>Profile for: {{{ $person->name }}}</h1>

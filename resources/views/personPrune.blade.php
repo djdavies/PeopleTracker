@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+    <title>Pruning data: {{{ $person->name }}}</title>
+@endsection
+
 @section('content')
 <h1>Pruning correct data results for: {{{ $person->name }}}</h1>
 <p><em>These are all the results marked <strong>correct</strong>.</em></p>

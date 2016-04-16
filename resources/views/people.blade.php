@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+    <title>Current Profiles</title>
+@endsection
+
 @section('content')
 
 <h1>All current people <em>search profiles.</em></h1>

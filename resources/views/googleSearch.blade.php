@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	Perform Google Person Search
+	<title>Perform Google Person Search</title>
 @endsection
 
 @section('content')

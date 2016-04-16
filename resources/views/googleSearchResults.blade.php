@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	Google Search Results
+	<title>Google Search Results</title>
 @endsection
 
 @section('content')
