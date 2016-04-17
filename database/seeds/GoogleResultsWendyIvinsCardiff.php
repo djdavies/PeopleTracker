@@ -40,7 +40,6 @@ class GoogleResultsWendyIvinsCardiff extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('wendy_ivins_cardiff.json');
         } else {
             echo "File not found: ";
         } 

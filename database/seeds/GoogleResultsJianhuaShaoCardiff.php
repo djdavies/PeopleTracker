@@ -40,7 +40,6 @@ class GoogleResultsJianhuaShaoCardiff extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('jianhua_shao_cardiff.json');
         } else {
             echo "File not found: ";
         } 

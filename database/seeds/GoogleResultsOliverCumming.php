@@ -40,7 +40,6 @@ class GoogleResultsOliverCumming extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('oliver_cumming_.json');
         } else {
             echo "File not found: ";
         } 

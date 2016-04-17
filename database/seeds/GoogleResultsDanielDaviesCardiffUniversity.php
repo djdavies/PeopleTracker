@@ -12,7 +12,7 @@ class GoogleResultsDanielDaviesCardiffUniversity extends Seeder
      * @return void
      */
     public function run()
-    {
+        {
         $resultJson = Storage::get('daniel_davies_cardiff_university.json');
         $result = json_decode($resultJson);
         
@@ -40,7 +40,6 @@ class GoogleResultsDanielDaviesCardiffUniversity extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('daniel_davies_cardiff_university.json');
         } else {
             echo "File not found: ";
         } 

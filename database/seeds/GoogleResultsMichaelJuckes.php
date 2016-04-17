@@ -40,7 +40,6 @@ class GoogleResultsMichaelJuckes extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('michael_juckes_.json');
         } else {
             echo "File not found: ";
         } 

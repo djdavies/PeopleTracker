@@ -63,4 +63,6 @@ Route::group(['middleware' => ['web']], function () {
     // Pruning data.
     Route::get('people/{id}/prune', 'GoogleResultsController@showCorrectVals');
     Route::resource('people/prune/{id}/', 'PrunesController@create');
+    Route::get('people/{id}/pruned', 'PrunesController@show');
+    Route::resource('prunedclassification/{id}', 'PrunesController@createClassification');
 });

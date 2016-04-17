@@ -40,7 +40,6 @@ class GoogleResultsRachelLyonTherapies extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('rachel_lyon_therapies.json');
         } else {
             echo "File not found: ";
         } 

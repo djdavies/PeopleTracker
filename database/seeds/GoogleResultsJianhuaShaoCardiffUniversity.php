@@ -40,7 +40,6 @@ class GoogleResultsJianhuaShaoCardiffUniversity extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('jianhua_shao_cardiff_university.json');
         } else {
             echo "File not found: ";
         } 

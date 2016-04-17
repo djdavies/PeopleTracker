@@ -8,8 +8,8 @@
 
     <h1>Profile for: {{{ $person->name }}}</h1>
     <p>Here are all the current results. Please mark these results as correct or incorrect.</p>
-    <p><em>NB: results are assumed incorrect. Colourblind mode coming soon.</em></p>
-    <p>Once completed: <a href="{{{ $person->id }}}/prune">Prune Correct Results Content Data</a></p>
+    <p><em>NB: results are assumed incorrect by defaul.</em></p>
+    <p>Once completed: <a href="{{{ $person->id }}}/prune"><button type="button" class="btn btn-success">Prune Correct Results Content Data</button></a></p>
 
     <div class="person">
         @if(Session::has('flash_message'))

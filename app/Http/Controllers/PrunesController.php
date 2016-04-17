@@ -48,6 +48,23 @@ class PrunesController extends Controller
         }
     }
 
+    public function createClassification(Request $request, $id)
+    {
+        if ($request) {
+            $classification = $request->input('classification');
+
+            echo $classification;
+
+            Prunes::
+               where('people_id', $id)
+               ->update(['classification' => $classification]);
+
+            Session::flash('flash_message', 'Pruned data was classified as: ' . $classification);
+        }
+
+       // return Redirect::to(URL::previous() . "#$id");
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -67,7 +84,13 @@ class PrunesController extends Controller
      */
     public function show($id)
     {
+        // Show pruned data for person.
+        $pruneds = Prunes::select('data')->where('people_id', '=', $id)->distinct()->get();
 
+        return view ('pruned', [
+            'person' => People::findOrFail($id),
+            'pruneds' => $pruneds
+            ]);
     }
 
     /**
@@ -90,7 +113,7 @@ class PrunesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 
     }
 
     /**

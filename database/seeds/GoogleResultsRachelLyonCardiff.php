@@ -40,7 +40,6 @@ class GoogleResultsRachelLyonCardiff extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('rachel_lyon_cardiff.json');
         } else {
             echo "File not found: ";
         } 

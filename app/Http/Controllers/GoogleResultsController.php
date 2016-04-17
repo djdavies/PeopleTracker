@@ -149,6 +149,7 @@ class GoogleResultsController extends Controller
 
         return view ('currentResults',
             [
+                'person' => People::findOrFail($id),
                 'queryKeys' => $queryKeys,
                 'queryValues' => $queryValues
             ]);

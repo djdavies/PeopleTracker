@@ -20,10 +20,15 @@
 	            		<h2>{{ $person->name }}</h2>
 	        		<br>
 	        		<a href="people/{{{ $person->id }}}">
-	        			<button type="button" class="btn btn-success">Mark Results</button>
+	        			<button type="button" class="btn btn-success">Mark Results and Create Pruned Data</button>
 	        		</a>
 	        		<a href="people/{{{ $person->id }}}/results">
 	        			<button type="button" class="btn btn-info">View Marked Results</button>
+	        		</a>
+	        		<a href="people/{{{ $person->id }}}/pruned">
+	        			<button type="button" class="btn btn-info">
+	        			View Pruned Data
+	        			</button>
 	        		</a>
 	            </li>	
 	        </ul>

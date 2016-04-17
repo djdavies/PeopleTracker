@@ -40,7 +40,6 @@ class GoogleResultsJianhuaShao extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('jianhua_shao_.json');
         } else {
             echo "File not found: ";
         } 

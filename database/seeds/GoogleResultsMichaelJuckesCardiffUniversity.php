@@ -40,7 +40,6 @@ class GoogleResultsMichaelJuckesCardiffUniversity extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('michael_juckes_cardiff_university.json');
         } else {
             echo "File not found: ";
         } 

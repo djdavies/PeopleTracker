@@ -40,7 +40,6 @@ class GoogleResultsOliverCummingCardiffUniversity extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('oliver_cumming_cardiff_university.json');
         } else {
             echo "File not found: ";
         } 

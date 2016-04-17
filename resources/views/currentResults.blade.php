@@ -6,7 +6,8 @@
 @section('content')
 	<script type="text/javascript" src="{{ URL::asset('js/Chart.js') }}"></script>
 
-	<h2>Of all queries used, how many results were correct?</h2>
+	<h2>How many results were correct for {{{ $person->name }}}?</h2>
+	<p><em>Of 8 results per search, how many were correct with which queries?<br>'None' means no further query apart from the person's name was searched.</em></p>
 	<canvas id="queries" width="600" height="400"></canvas>
 	
 	<script type="text/javascript">

@@ -40,7 +40,6 @@ class GoogleResultsDanielDaviesJake extends Seeder
                     'query' => $result->query
                 ]);
             } // end for
-            Storage::delete('daniel_davies_jake.json');
         } else {
             echo "File not found: ";
         } 
