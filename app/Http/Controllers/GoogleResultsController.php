@@ -130,13 +130,28 @@ class GoogleResultsController extends Controller
         // Combine the new summed correct resuluts values with the search queries used.
         $querySumCorrectsCombine = array_combine($queryCorrect, $querySumCorrects);
 
-        print_r($querySumCorrectsCombine);
-
         // For each results (atm, 0, 1) what percentage was successful?
         // ATM, max results is 8.
         // so, use array value divided by elements in array+1 (0-based).
 
-        return view ('currentResults');
+        // Get all the keys from querySum object, with values to be passed to view.
+
+        $queryKeys = [];
+        $queryValues = [];
+        // Get all keys and values, move to new arrays.
+        foreach ($querySumCorrectsCombine as $key => $value) {
+            if ($key == '') {
+                $key = "None";
+            }
+            array_push($queryKeys, $key);
+            array_push($queryValues, $value);
+        }
+
+        return view ('currentResults',
+            [
+                'queryKeys' => $queryKeys,
+                'queryValues' => $queryValues
+            ]);
     }            
 
 

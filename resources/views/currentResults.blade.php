@@ -6,13 +6,17 @@
 @section('content')
 	<script type="text/javascript" src="{{ URL::asset('js/Chart.js') }}"></script>
 
-	<h2>What percentage of search results were successful?</h2>
-	<canvas id="rice" width="600" height="400"></canvas>
+	<h2>Of all queries used, how many results were correct?</h2>
+	<canvas id="queries" width="600" height="400"></canvas>
 	
 	<script type="text/javascript">
-	var riceData = {
-	// Queries used, hard-coded....
-	labels : ["None","Cardiff","Cardiff University","The Alacrity Foundation","Jake","Computer Science"],
+	// Convert PHP array with JSON for use in JS.
+	var jArrayKeys = <?php echo json_encode($queryKeys); ?>;
+	var jArrayValues = <?php echo json_encode($queryValues); ?>;
+
+	var queryData = {
+	// Use query keys.
+	labels : jArrayKeys,
 	datasets :
 	 [
 	    {
@@ -20,14 +24,14 @@
 	      strokeColor : "#ACC26D",
 	      pointColor : "#fff",
 	      pointStrokeColor : "#9DB86D",
-	      // Summed correct values.
-	      data : [0,0,0,1,4,1]
+	      // Use query values.
+	      data : jArrayValues
 	    }
 	 ]
 	}
 
-	  var rice = document.getElementById('rice').getContext('2d');
-	       new Chart(rice).Line(riceData);
+	  var queries = document.getElementById('queries').getContext('2d');
+	       new Chart(queries).Line(queryData);
 	</script>
 
 @endsection
