@@ -13,26 +13,27 @@
 
     @endif  
 	<h2>Pruned data for: {{{ $person->name }}}</h2>
-	<br>
-	@foreach ($pruneds as $pruned)
-		<ul class="list-group">
-		  <span class="label label-default">Pruned data found</span>
-		  <li class="list-group-item">
-		{{{ $pruned->data }}}
-		    <span class="badge">name</span>
-		    	{!! Form::open(array('url' => array('prunedclassification/{id}'))) !!}
+	<div class="jumbotron">
+		@foreach ($pruneds as $pruned)
+			<ul class="list-group">
+			  <span class="label label-default" id="{{{ $pruned->id }}}">Pruned data found</span>
+			  <li class="list-group-item">
+				<span class="label label-success">{{{ $pruned->data }}}</span>
+		    	<span class="badge">{{{ $pruned->classification }}}</span> 		
+		    	{!! Form::open(array('url' => array('prunedata/classify', $pruned->id))) !!}
 
 				{!! Form::label('classification', 'Classification of data') !!}
-				{!! Form::text('classification', '', [
+				{!! Form::text('classification', '', ['size' => '75x5',
 					'placeholder' => 'organisation, school, name, job title, field of work/study, location'
 					]) !!}
 
 				{!!Form::submit('Classify!')!!}
 
 				{!!Form::close()!!}
-
-		  </li>
-		</ul>
-	@endforeach 
+				<em>NB: this should be a 1 word classifier for the type of data that you've pruned.</em>
+			  </li>
+			</ul>
+		@endforeach 
+	</div>
 </div>        		
 @endsection

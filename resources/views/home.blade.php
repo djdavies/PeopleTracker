@@ -43,7 +43,7 @@
                 LinkedIn/Social Media Search Results.
         </li>
       <li class="list-group-item">
-            <span class="badge">In Progress</span>
+            <span class="badge">Complete</span>
             Graphs showing search success rate, implying best search parameters to use.
       </li>
     </ul>

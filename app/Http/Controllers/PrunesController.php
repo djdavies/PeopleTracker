@@ -10,6 +10,8 @@ use App\GoogleResults;
 use App\People;
 use App\Prunes;
 use Session;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 
 class PrunesController extends Controller
 {
@@ -53,16 +55,14 @@ class PrunesController extends Controller
         if ($request) {
             $classification = $request->input('classification');
 
-            echo $classification;
-
             Prunes::
-               where('people_id', $id)
-               ->update(['classification' => $classification]);
+               where('id', $id)
+               ->update(['classification' => $classification]); 
 
             Session::flash('flash_message', 'Pruned data was classified as: ' . $classification);
         }
 
-       // return Redirect::to(URL::previous() . "#$id");
+       return Redirect::to(URL::previous() . "#$id");
     }
 
     /**
@@ -85,11 +85,11 @@ class PrunesController extends Controller
     public function show($id)
     {
         // Show pruned data for person.
-        $pruneds = Prunes::select('data')->where('people_id', '=', $id)->distinct()->get();
+        $pruneds = Prunes::select('data', 'id', 'classification')->where('people_id', '=', $id)->distinct()->get();
 
         return view ('pruned', [
             'person' => People::findOrFail($id),
-            'pruneds' => $pruneds
+            'pruneds' => $pruneds,
             ]);
     }
 
