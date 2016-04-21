@@ -23,7 +23,8 @@
 		    	{!! Form::open(array('url' => array('prunedata/classify', $pruned->id))) !!}
 
 				{!! Form::label('classification', 'Classification of data') !!}
-				{!! Form::text('classification', '', ['size' => '75x5',
+				{!! Form::text('classification', '', [
+					'size' => '75x5',
 					'placeholder' => 'organisation, school, name, job title, field of work/study, location'
 					]) !!}
 

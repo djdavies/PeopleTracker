@@ -135,7 +135,6 @@ class GoogleResultsController extends Controller
         // so, use array value divided by elements in array+1 (0-based).
 
         // Get all the keys from querySum object, with values to be passed to view.
-
         $queryKeys = [];
         $queryValues = [];
         // Get all keys and values, move to new arrays.
@@ -159,7 +158,7 @@ class GoogleResultsController extends Controller
     public function showCorrectVals($id)
     {
         // Only get googleResults for the $id where correct is '1'.
-        $googleResults = GoogleResults::wherePeopleId(1)->whereCorrect(1)->get();
+        $googleResults = GoogleResults::wherePeopleId($id)->whereCorrect(1)->get();
 
         return view ('personPrune', 
             [
