@@ -23,11 +23,11 @@
 	        			<button type="button" class="btn btn-success">Mark Results and Create Pruned Data</button>
 	        		</a>
 	        		<a href="people/{{{ $person->id }}}/results">
-	        			<button type="button" class="btn btn-info">View Successful Results</button>
+	        			<button type="button" class="btn btn-info">Successful Results</button>
 	        		</a>
 	        		<a href="people/{{{ $person->id }}}/pruned">
 	        			<button type="button" class="btn btn-warning">
-	        			View Pruned Data and Classification
+	        			Classify Pruned Data
 	        			</button>
 	        		</a>
 	            </li>	

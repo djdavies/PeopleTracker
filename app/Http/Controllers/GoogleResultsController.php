@@ -146,11 +146,23 @@ class GoogleResultsController extends Controller
             array_push($queryValues, $value);
         }
 
+        // Get the classification of data, and count the occurence of each 'employer', etc.
+        $prunedClassifications = Prunes::select('classification')->where('people_id', '=', $id)->get();
+
+        $classifications = [];
+        foreach ($prunedClassifications as $prunedClassification) {
+            array_push($classifications, $prunedClassification->classification);
+        }
+
+        $classificationsCount = array_count_values($classifications);
+        print_r($classificationsCount);
+
         return view ('currentResults',
             [
                 'person' => People::findOrFail($id),
                 'queryKeys' => $queryKeys,
-                'queryValues' => $queryValues
+                'queryValues' => $queryValues,
+                'classificationsCount' => $classificationsCount
             ]);
     }            
 
