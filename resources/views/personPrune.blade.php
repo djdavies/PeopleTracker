@@ -43,7 +43,7 @@
 		{!! Form::label('pruned', 'Data Found') !!}
 
 		{!! Form::text ('data', '', [
-			'size' => '75x5',
+			'size' => '200x5',
 			'placeholder' => 'e.g. london, bank of england, software developer, cardiff university'
 			])!!}
 		<br>

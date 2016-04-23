@@ -30,6 +30,11 @@
 	        			Classify Pruned Data
 	        			</button>
 	        		</a>
+	        		<a href="people/{{{ $person->id }}}/pruned">
+	        			<button type="button" class="btn btn-warning">
+	        			Suggested search parameters
+	        			</button>
+	        		</a>
 	            </li>	
 	        </ul>
         @endforeach

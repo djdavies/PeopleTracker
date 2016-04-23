@@ -155,7 +155,6 @@ class GoogleResultsController extends Controller
         }
 
         $classificationsCount = array_count_values($classifications);
-        print_r($classificationsCount);
 
         return view ('currentResults',
             [

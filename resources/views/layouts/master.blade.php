@@ -11,15 +11,16 @@
 </head>
 <body class="language-php">
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">People Tracker</a>
+      <a class="navbar-brand" href="/">People Tracker <span class="glyphicon glyphicon-home" aria-hidden="true"></a>
     </div>
+
     <div class="nav navbar-nav navbar-right">
-        <li><a href="/googlesearch">Google Search</a></li>
-        <li><a href="/people">Current People</a></li>
-        <li><a href="/seeding">Seeding</a></li>
+        <li><a href="/googlesearch">Google Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+        <li><a href="/people">Current People <span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
+        <li><a href="/seeding">Seeding <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></a></li>
     </div>
   </div>
 </nav>
