@@ -30,7 +30,7 @@
 	        			Classify Pruned Data
 	        			</button>
 	        		</a>
-	        		<a href="people/{{{ $person->id }}}/pruned">
+	        		<a href="people/{{{ $person->id }}}/suggested">
 	        			<button type="button" class="btn btn-warning">
 	        			Suggested search parameters
 	        			</button>

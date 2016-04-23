@@ -93,6 +93,16 @@ class PrunesController extends Controller
             ]);
     }
 
+    public function showSuggested($id)
+    {
+        $suggesteds = Prunes::select('data', 'id', 'classification')->where('people_id', '=', $id)->distinct()->get();
+
+        return view ('suggestedSearch', [
+            'person' => People::findOrFail($id),
+            'suggesteds' => $suggesteds,
+            ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
