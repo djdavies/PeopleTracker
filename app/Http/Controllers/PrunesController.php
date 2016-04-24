@@ -10,6 +10,7 @@ use App\GoogleResults;
 use App\People;
 use App\Prunes;
 use Session;
+use Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Input;
@@ -106,7 +107,7 @@ class PrunesController extends Controller
 
     public function suggestedSearch(Request $request, $id)
     {
-        // Select person id via id
+        // Select person id via id.
         $name = People::select('name')->where('id', '=', $id)->get();
 
         foreach ($name as $key => $value) {
@@ -135,10 +136,13 @@ class PrunesController extends Controller
 
         $url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=large&start=0&q==".$nameFinal."%20".$queriesFinal;
 
-        echo $url;
-        // $body = file_get_contents($url);
-        // $json = json_decode($body);
-        // var_dump($body);
+        $body = file_get_contents($url);
+        $json = json_decode($body);
+        $filename = rawurldecode($nameFinal);
+        $filenameUnderscores = str_replace(' ', '_', $filename);
+        Storage::put($filenameUnderscores . '_suggested' . '.json', $body);
+
+        return view('suggestedSearchResults', ['query' => $joinQueries, 'name' => $nameQuery, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);
     }
     /**
      * Show the form for editing the specified resource.
