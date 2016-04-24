@@ -106,27 +106,39 @@ class PrunesController extends Controller
 
     public function suggestedSearch(Request $request, $id)
     {
-        echo "Hi from suggested search";
-        echo $id;
+        // Select person id via id
+        $name = People::select('name')->where('id', '=', $id)->get();
+
+        foreach ($name as $key => $value) {
+            $nameQuery = $value->name;
+        }
+
+        // All values of checkboxes.
         $input = $request->all();
 
         // Remove first element (_token) of array.
         $stack = $input;
         $tokenRm = array_shift($stack);
 
+        // Change underscores to spaces, add values to array.
         $queries = [];
         foreach ($stack as $key => $value) {
             $us2sp = str_replace('_', ' ', $key);
             array_push($queries, $us2sp);
         }
 
+        // Create a string out of the array, space separated.
         $joinQueries = implode(' ', $queries);
+        // Convert spaces to %20s
         $queriesFinal = rawurlencode($joinQueries);
+        $nameFinal = rawurlencode($nameQuery);
 
-        $url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=large&start=0&q==".$queriesFinal;
+        $url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=large&start=0&q==".$nameFinal."%20".$queriesFinal;
 
-        $body = file_get_contents($url);
-        $json = json_decode($body);
+        echo $url;
+        // $body = file_get_contents($url);
+        // $json = json_decode($body);
+        // var_dump($body);
     }
     /**
      * Show the form for editing the specified resource.
