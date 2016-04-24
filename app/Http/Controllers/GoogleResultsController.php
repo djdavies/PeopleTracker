@@ -60,7 +60,7 @@ class GoogleResultsController extends Controller
         $finalBody = substr($body, 0, -1).$replacement;
         Storage::put($filenameUnderscores . '.json', $finalBody);
 
-    return view('googleSearchResults', ['query' => $query, 'name' => $name, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);
+        return view('googleSearchResults', ['query' => $query, 'name' => $name, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);
 
         //  $i+=8;
     // }

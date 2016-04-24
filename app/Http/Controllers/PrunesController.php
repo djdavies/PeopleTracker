@@ -12,6 +12,7 @@ use App\Prunes;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Input;
 
 class PrunesController extends Controller
 {
@@ -103,6 +104,30 @@ class PrunesController extends Controller
             ]);
     }
 
+    public function suggestedSearch(Request $request, $id)
+    {
+        echo "Hi from suggested search";
+        echo $id;
+        $input = $request->all();
+
+        // Remove first element (_token) of array.
+        $stack = $input;
+        $tokenRm = array_shift($stack);
+
+        $queries = [];
+        foreach ($stack as $key => $value) {
+            $us2sp = str_replace('_', ' ', $key);
+            array_push($queries, $us2sp);
+        }
+
+        $joinQueries = implode(' ', $queries);
+        $queriesFinal = rawurlencode($joinQueries);
+
+        $url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&rsz=large&start=0&q==".$queriesFinal;
+
+        $body = file_get_contents($url);
+        $json = json_decode($body);
+    }
     /**
      * Show the form for editing the specified resource.
      *

@@ -66,4 +66,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('people/{id}/pruned', 'PrunesController@show');
     Route::resource('prunedata/classify/{id}/', 'PrunesController@createClassification');
     Route::get('/people/{id}/suggested/', 'PrunesController@showSuggested');
+
+    // Suggested search.
+    Route::resource('suggestedSearch/{id}/', 
+        'PrunesController@suggestedSearch');
 });
