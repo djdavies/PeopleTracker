@@ -31,14 +31,14 @@ class GoogleResultsDanielDavies extends Seeder
 
             echo "PeopleId is: " . $peopleId;
             // Iterate through objects and create results in DB.
-            // for ($n = 0; $n < count($result->responseData->results); $n++) {
-            //     $google = GoogleResults::create([
-            //         'content' => $result->responseData->results[$n]->content,
-            //         'people_id' => $peopleId->id,
-            //         'title' => $result->responseData->results[$n]->title,
-            //         'url' => $result->responseData->results[$n]->url,
-            //         'query' => $result->query
-            //     ]);
+            for ($n = 0; $n < count($result->responseData->results); $n++) {
+                $google = GoogleResults::create([
+                    'content' => $result->responseData->results[$n]->content,
+                    'people_id' => $peopleId->id,
+                    'title' => $result->responseData->results[$n]->title,
+                    'url' => $result->responseData->results[$n]->url,
+                    'query' => $result->query
+                ]);
             } // end for
         } else {
             echo "File not found: ";

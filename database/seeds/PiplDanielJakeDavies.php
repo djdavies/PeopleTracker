@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\People;
 use App\GoogleResults;
+use App\SocialMedia;
 
 class PiplDanielJakeDavies extends Seeder
 {
@@ -39,55 +40,67 @@ class PiplDanielJakeDavies extends Seeder
  			$genderCount = count($result->possible_persons[0]->gender);
  			$jobsCount = count($result->possible_persons[0]->jobs);
  			$educationsCount = count($result->possible_persons[0]->educations);
+ 			$userIdsCount = count($result->possible_persons[0]->user_ids);
+ 			$imagesCount = count($result->possible_persons[0]->images);
 
             // Echo gender. 
             echo "**** GENDER ****\n";
+        	// print_r($result->possible_persons[0]->gender->content."\n");
+        	$social_media_gender = SocialMedia::create([
+        		'people_id' => $peopleId->id,
+        		'gender' => $result->possible_persons[0]->gender->content
+        	]);
+            // echo "\n";
 
-        	print_r($result->possible_persons[0]->gender->content."\n");
-            echo "\n";
-
-            // Echo addresses. NB: [$possible_personsCount] on addresses, I would need to 	loop through all of them.
+            // Echo addresses.
             echo "**** ADDRESSES ****\n";	
             for ($n = 0; $n < $addressesCount; $n++)
-            	print_r($result->possible_persons[0]->addresses[$n]->display."\n");
-			echo "\n";
-
+            	// print_r($result->possible_persons[0]->addresses[$n]->display."\n");
+				$social_media_addresses = SocialMedia::create([
+					'people_id' => $peopleId->id,
+					'addresses' => $result->possible_persons[0]->addresses[$n]->display
+				]);
+			// echo "\n";
 
             // Echo jobs.
             echo "**** JOBS ****\n";
             for ($n = 0; $n < $jobsCount; $n++)
-            	print_r($result->possible_persons[0]->jobs[$n]->display."\n");
-            echo "\n";
+            	// print_r($result->possible_persons[0]->jobs[$n]->display."\n");
+            	$social_media_jobs = SocialMedia::create([
+            		'people_id' => $peopleId->id,
+            		'jobs' => $result->possible_persons[0]->jobs[$n]->display
+            	]);
+            // echo "\n";
 
             // Echo educations.
             echo "**** EDUCATIONS ****\n";
-            for ($n = 0; $n > $educationsCount; $n++); $educationsCount++)
-	   //          	print_r($result->possible_persons[$possible_personsCount]->educations[$educationsCount]->display."\n");
-	   //          echo "\n";
+            for ($n = 0; $n < $educationsCount; $n++)
+            	// print_r($result->possible_persons[0]->educations[$n]->display."\n");
+            	$social_media_educations = SocialMedia::create([
+            		'people_id' => $peopleId->id,
+            		'educations' => $result->possible_persons[0]->educations[$n]->display
+            	]);
+            // echo "\n";
 
-	   //          // Echo user_ids -- the google one is crazy.
-	   //          echo "**** USER_IDS ****\n";
-	   //          for ($user_idsCount = 0; $user_idsCount < count($result->possible_persons[$possible_personsCount]->user_ids); $user_idsCount++)
-	   //          	print_r($result->possible_persons[$possible_personsCount]->user_ids[$user_idsCount]->content."\n");
-	   //          echo "\n";
+            // Echo user_ids -- the google one is crazy.
+            echo "**** USER_IDS ****\n";
+            for ($n = 0; $n < $userIdsCount; $n++)
+            	// print_r($result->possible_persons[0]->user_ids[$n]->content."\n");
+            	$social_media_userIds = SocialMedia::create([
+            		'people_id' => $peopleId->id,
+            		'user_ids' => $result->possible_persons[0]->user_ids[$n]->content
+            	]);
+            // echo "\n";
 
-	   //          // Echo images (url).
-	   //          echo "**** IMAGES ****\n";
-	   //          for ($imagesCount = 0; $imagesCount < count($result->possible_persons[$possible_personsCount]->images); $imagesCount++)
-	   //          	print_r($result->possible_persons[$possible_personsCount]->images[$imagesCount]->url."\n");
-	   //          echo "\n";
-
-            // Iterate through objects and create results in DB.
-            // for ($n = 0; $n < count($result->responseData->results); $n++) {
-            //     $google = GoogleResults::create([
-            //         'content' => $result->responseData->results[$n]->content,
-            //         'people_id' => $peopleId->id,
-            //         'title' => $result->responseData->results[$n]->title,
-            //         'url' => $result->responseData->results[$n]->url,
-            //         'query' => $result->query
-            //     ]);
-            // } // end for
-
+            // Echo images (url).
+            echo "**** IMAGES ****\n";
+            for ($n = 0; $n < $imagesCount; $n++)
+            	// print_r($result->possible_persons[0]->images[$n]->url."\n");
+            	$social_media_images = SocialMedia::create([
+            		'people_id' => $peopleId->id,
+            		'images' => $result->possible_persons[0]->images[$n]->url 
+            	]);
+            // echo "\n";
         } else {
             echo "File not found: ";
         } 

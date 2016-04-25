@@ -19,4 +19,8 @@ class People extends Model
     public function prunes() {
         return $this->hasOne('Prunes');
     }
+
+    public function socialMedia() {
+        return $this->hasOne('SocialMedia');
+    }
 }
