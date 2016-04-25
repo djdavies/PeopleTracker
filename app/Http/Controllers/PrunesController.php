@@ -140,7 +140,12 @@ class PrunesController extends Controller
         $json = json_decode($body);
         $filename = rawurldecode($nameFinal);
         $filenameUnderscores = str_replace(' ', '_', $filename);
-        Storage::put($filenameUnderscores . '_suggested' . '.json', $body);
+
+        // Delete last '}' and replace with ,"query":"$query","name":"$name"}
+        $replacement = ",\"query\":\"$joinQueries\",\"name\":\"$nameQuery\"}";
+        // The final string.
+        $finalBody = substr($body, 0, -1).$replacement;
+        Storage::put($filenameUnderscores . '_suggested' . '.json', $finalBody);
 
         return view('suggestedSearchResults', ['query' => $joinQueries, 'name' => $nameQuery, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);
     }

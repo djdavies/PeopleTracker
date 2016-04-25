@@ -8,9 +8,9 @@
 
      Person you searched for: <em>{{{ $name }}}</em>
      <br>
-	Search query you use: <em>{{{ $filename}}}
+	Search query you use: <em>{{{ $query }}}
 	<br> 
-	File containing search results was saved at: <strong>{{{storage_path()}}}/{{{ $filenameUnderscores }}}.json</strong> -- please <a href="/seeding">seed</a> this file.
+	File containing search results was saved at: <strong>{{{storage_path()}}}/{{{ $filenameUnderscores }}}_suggested.json</strong> -- please <a href="/seeding">seed</a> this file.
 	<hr>
 	<br>
 
