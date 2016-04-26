@@ -6,10 +6,8 @@
 @section('content')
 	<ol class="breadcrumb">
 	  <li><a href="/">Home</a></li>
-	  <li><a href="googlesearch">Google Search</a></li>
-	  <li><a href="seeding">Seeding</a></li>
-	  <li><a href="people">Current People Profiles</a></li>
 	  <li class="active">Social Media Search</li>
+	  <li><a href="seeding">Seeding</a></li>
 	</ol>
 	<div class="jumbotron">
 		<h2>Getting Social Media Data</h2>

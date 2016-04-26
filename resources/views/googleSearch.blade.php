@@ -10,7 +10,8 @@
       <li class="active">Google Search</li>
       <li><a href="seeding">Seeding</a></li>
     </ol>
-	<h2>Search for new person.</h2>
+    <div class="alert alert-warning" role="alert">You may want to try a <a href="socialMediaSearch">Social Media Search.</a></div>
+	<h2>Search for new person</h2>
 
 	{!! Form::open(array('url' => array('googlesearchresults'))) !!}
 
