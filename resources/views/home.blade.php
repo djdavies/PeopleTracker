@@ -51,6 +51,9 @@
             Graphs showing search success rate, implying best search parameters to use.
       </li>
     </ul>
+
+    <div class="alert alert-danger" role="alert">Feel free to checkout the <a href="https://github.com/djdavies/PeopleTracker">GitHub repository</a>, as well as the <a href="https://github.com/djdavies/PeopleTracker/issues">features, enhancements and bugs</div>
+
     <p><a class="btn btn-primary btn-lg" href="/googlesearch" role="button">Try it!</a></p>
   </div>
 @endsection
