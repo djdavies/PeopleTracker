@@ -4,6 +4,12 @@
 @endsection
 
 @section('content')
+	<ol class="breadcrumb">
+	  <li><a href="/">Home</a></li>
+	  <li><a href="/people">Profile for {{{ $person->name }}}</a></li>
+	  <li class="active">Results for {{{ $person->name }}}</li>
+	</ol>
+
 	<script type="text/javascript" src="{{ URL::asset('js/Chart.js') }}"></script>
 
 	<h2>How many results (of first page) were correct for {{{ $person->name }}}?</h2>

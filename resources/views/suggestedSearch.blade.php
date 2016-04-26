@@ -5,6 +5,12 @@
 @endsection
 
 @section('content')
+	<ol class="breadcrumb">
+	  <li><a href="/">Home</a></li>
+	  <li><a href="/people">Current People Profiles</a></li>
+	  <li class="active">Suggested searches for {{{ $person->name }}}</li>
+	</ol>
+
 	<h1>Suggested Searches for {{{ $person->name }}}</h1>
 	<div class="alert alert-success" role="alert">
 		<em>Select what search parameters queries you would like to use in the search.</em>

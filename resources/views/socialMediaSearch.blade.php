@@ -4,7 +4,14 @@
 @endsection
 
 @section('content')
-		<div class="jumbotron">
+	<ol class="breadcrumb">
+	  <li><a href="/">Home</a></li>
+	  <li><a href="googlesearch">Google Search</a></li>
+	  <li><a href="seeding">Seeding</a></li>
+	  <li><a href="people">Current People Profiles</a></li>
+	  <li class="active">Social Media Search</li>
+	</ol>
+	<div class="jumbotron">
 		<h2>Getting Social Media Data</h2>
 		
 		<p>Getting social media data isn't easy because scraping results from networks like Facebook, LinkedIn, and others, you are breaking their Terms of Conditions.</p>
@@ -22,6 +29,6 @@
 		<p>Selecting the API Key <em>'Business Premium Demo'</em> is likely to give the most results, and these are returned as JSON. <strong>There are, howerver, limits to this demo sample.</strong></p>
 
 		<p>So as not to break PIPL's ToC, copy the JSON response and look at <a href="/seeding#pipl">seeding PIPL data</a> for further explanation.</p>
-		</div>
+	</div>
 
 @endsection

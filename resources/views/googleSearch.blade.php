@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li class="active">Google Search</li>
+      <li><a href="seeding">Seeding</a></li>
+    </ol>
 	<h2>Search for new person.</h2>
 
 	{!! Form::open(array('url' => array('googlesearchresults'))) !!}

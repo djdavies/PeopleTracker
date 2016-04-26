@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="/people">Current People Profiles</a></li>
+      <li class="active">Profile for {{{ $person->name }}}</li>
+    </ol>
 
     <h1>Profile for: {{{ $person->name }}}</h1>
     <p>Here are all the current results. Please mark these results as correct or incorrect.</p>

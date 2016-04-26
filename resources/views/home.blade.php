@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+    <ol class="breadcrumb">
+      <li class="active">Home</li>
+      <li><a href="googlesearch">Google Search</a></li>
+    </ol>
   <div class="jumbotron">
     <h1>People Tracker</h1>
     <p>Perform a Google Search, and get results back in JSON. This file will then be <a href="/seeding">seeded</a> into the database, and the fun will begin...</p>

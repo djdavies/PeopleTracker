@@ -5,7 +5,10 @@
 @endsection
 
 @section('content')
-
+	<ol class="breadcrumb">
+	  <li><a href="/">Home</a></li>
+	  <li class="active">Current People Profiles</li>
+	</ol>
 <h1>All current people <em>search profiles.</em></h1>
 
 <div class="people">

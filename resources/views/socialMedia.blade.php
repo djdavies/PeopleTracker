@@ -4,7 +4,11 @@
 @endsection
 
 @section('content')
-
+	<ol class="breadcrumb">
+	  <li><a href="/">Home</a></li>
+	  <li><a href="/people">Current People Profiles</a></li>
+	  <li class="active">Mark suggested results for {{{ $person->name }}}</li>
+	</ol>
 	@if ($socialMedias)
 		<div class="person">
 		    @if(Session::has('flash_message'))

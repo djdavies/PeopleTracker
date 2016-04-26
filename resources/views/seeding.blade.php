@@ -13,6 +13,12 @@
 @endsection	
 
 @section('content')
+    <ol class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li><a href="googlesearch">Google Search</a></li>
+      <li class="active">Seeding</li>
+      <li><a href="socialMediaSearch">Social Media Search</a></li>
+    </ol>
 	<div class="alert alert-info" role="alert">You will find after creating one seeder class based on the code and instructions here, you can seed more data into the database in a matter of how fast you can copy/paste.</div>
 	<br>
 	<div class="jumbotron">

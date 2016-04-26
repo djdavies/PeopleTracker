@@ -5,7 +5,11 @@
 @endsection
 
 @section('content')
-
+     <ol class="breadcrumb">
+       <li><a href="/">Home</a></li>
+       <li><a href="/people">Current People Profiles</a></li>
+       <li class="active">Suggested Search Results</li>
+     </ol>
      Person you searched for: <em>{{{ $name }}}</em>
      <br>
 	Search query you use: <em>{{{ $query }}}
