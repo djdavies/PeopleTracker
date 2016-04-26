@@ -149,6 +149,7 @@ class PrunesController extends Controller
 
         return view('suggestedSearchResults', ['query' => $joinQueries, 'name' => $nameQuery, 'filename' => $filename, 'filenameUnderscores' => $filenameUnderscores, 'json' => $json]);
     }
+
     /**
      * Show the form for editing the specified resource.
      *

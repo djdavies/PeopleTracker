@@ -35,6 +35,11 @@
 	        			Suggested search parameters
 	        			</button>
 	        		</a>
+	        		<a href="people/{{{ $person->id }}}/socialmedia">
+	        			<button type="button" class="btn btn-warning">
+	        			Mark Social Media Results
+	        			</button>
+	        		</a>
 	            </li>	
 	        </ul>
         @endforeach

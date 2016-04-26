@@ -70,4 +70,12 @@ Route::group(['middleware' => ['web']], function () {
     // Suggested search.
     Route::resource('suggestedSearch/{id}/', 
         'PrunesController@suggestedSearch');
+
+    // Pipl / Social Media.
+    Route::get('people/{id}/socialmedia', 'SocialMediaController@show');
+    Route::resource('socialmediaresult/{id}/correct', 'SocialMediaController@update');
+    Route::resource('socialmediaresult/{id}/incorrect', 'SocialMediaController@updateIncorrect');
+    Route::get('/socialMediaSearch/', function () {
+        return view('socialMediaSearch');
+    });
 });

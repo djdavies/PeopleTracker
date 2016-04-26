@@ -29,7 +29,7 @@
       </li>
 
       <li class="list-group-item">
-            <span class="badge">In Progress</span>
+            <span class="badge">Complete</span>
                 Further seach parameters, suggested on correctly validated user data.
         </li>
 
@@ -39,7 +39,7 @@
       </li>
 
       <li class="list-group-item">
-            <span class="badge">In Progress</span>
+            <span class="badge">Complete</span>
                 LinkedIn/Social Media Search Results.
         </li>
       <li class="list-group-item">

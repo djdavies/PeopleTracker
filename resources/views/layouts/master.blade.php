@@ -21,6 +21,7 @@
         <li><a href="/googlesearch">Google Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
         <li><a href="/people">Current People <span class="glyphicon glyphicon-user" aria-hidden="true"></a></li>
         <li><a href="/seeding">Seeding <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></a></li>
+        <li><a href="/socialMediaSearch">Social Media Search <span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
     </div>
   </div>
 </nav>
