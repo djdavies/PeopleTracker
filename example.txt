@@ -1,0 +1,7 @@
+mug
+calculator
+candle
+screwdriver
+glasses case
+letter opener
+wrist watch
